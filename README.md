@@ -33,25 +33,19 @@ P_p = crop_to_bounding_box(P_p, BBox)
 ```
 Crop `P_p` to retain only the points within the bounding box `BBox`.
 
-### 3. Radius Outlier Removal on Predicted Points
-```pseudo
-P_p = radius_outlier_removal(P_p, r, k)
-```
-Apply a radius outlier removal filter to `P_p`, keeping only points that have at least `k` neighbors within radius `r`.
-
-### 4. Registration of the Actual Next Frame
+### 3. Registration of the Actual Next Frame
 ```pseudo
 P_a' = ICP(P_a, P_p)
 ```
 Align the actual next frame point cloud `P_a` with `P_p` using ICP.
 
-### 5. Matching Points (Static)
+### 4. Matching Points (Static)
 ```pseudo
 Static_Points = find_matching_points(P_a, P_p, epsilon)
 ```
 Identify points in `P_a` that match closely with points in `P_p` within threshold `epsilon`.
 
-### 6. Non-Matching Points (Dynamic)
+### 5. Non-Matching Points (Dynamic)
 ```pseudo
 Dynamic_Points = P_a - Static_Points
 ```
